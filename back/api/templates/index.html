@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Computer Parts Store</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Computer Parts Store</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="catalog">Catalog</a></li>
+                <li><a href="cart">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="index-hero">
+            <h1 class = "index_text">Welcome to the Ultimate Computer Parts Store</h1>
+            <p class = "index_text">Your one-stop shop for all your computer hardware needs.</p>
+            <a href="catalog.html" class="btn-primary">Shop Now</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Computer Parts Store. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

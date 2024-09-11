@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product - Toy Store</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Toy Store</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="catalog">Catalog</a></li>
+                <li><a href="cart">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="product-details">
+            <img src="images/graphics-card.jpg" alt="Toy Car">
+            <div class="product-info">
+                <h2>Graphic card</h2>
+                <p>Price: $499.99</p>
+                <p>Description: Powerful graphic card rtx 3080.</p>
+                <button class="add-to-cart" data-product="Toy Car" data-price="499.99">Add to Cart</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Computer Parts Store. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
