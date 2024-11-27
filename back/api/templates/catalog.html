@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог - Магазин компьютерных запчастей</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        img {
+            height: min-content;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            background-color: #f2f4f7;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #1a1a1d;
+            padding-top: 20px;
+            color: #fff;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 15px 20px;
+            color: #f2f4f7;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #333;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #1a1a1d;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s ease;
+            justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            height: 100px;
+            border-bottom: 1px solid #f2f4f7;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .product button {
+            padding: 10px 20px;
+            background-color: #1a1a1d;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .product button:hover {
+            background-color: #333;
+        }
+
+        /* Корзина */
+        .cart-page h2,
+        .catalog-page h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #1a1a1d;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: auto;
+        }
+
+        .cart-item-details {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .cart-item-details h3 {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .cart-item-details p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .cart-item-remove {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cart-item-remove:hover {
+            background-color: #c0392b;
+        }
+
+        .cart-total {
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Страница продукта */
+        .product-page {
+            display: flex;
+            gap: 30px;
+        }
+
+        .product-page img {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .product-info {
+            flex-grow: 1;
+        }
+
+        .product-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #1a1a1d;
+        }
+
+        .product-info p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .product-info span {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .product-info button {
+            padding: 15px 30px;
+            background-color: #1a1a1d;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-info button:hover {
+            background-color: #333;
+        }
+
+        .routing {
+            background-color: #1a1a1d;
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="routing" id="routing">
+
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>pcpartz</h1>
+        </header>
+        <div class="products">
+            {% for product in products %}
+
+            <div  class="product">
+                <img src="media/{{product.image}}" alt="{{product.name}}">
+                <h3>{{product.name}}</h3>
+                <p>Цена: ${{product.price}}</p>
+                <a href="product/{{product.id}}"><button>Посмотреть</button></a>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    <script>
+
+
+        fetch('routing')
+            .then(response => response.text())
+            .then(html => document.getElementById('routing').innerHTML = html);
+    </script>
+</body>
+
+</html>
